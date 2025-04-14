@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const nodemailer = require('nodemailer');
 const userModel = require('../../models/users.schema');
 
@@ -10,8 +12,8 @@ exports.sendMail = async (request, response) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'yogeshsainijpr123@gmail.com', // Replace with your Gmail
-            pass: 'ilcc tlzk emmo ksfg'  // Use App Password (not your Gmail password)
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS // This should be your Gmail App Password
         }
     });
     try {
